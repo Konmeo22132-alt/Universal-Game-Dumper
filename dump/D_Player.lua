@@ -76,9 +76,11 @@ if char then
             -- Humanoid states supported
             local stateList = {}
             for _, st in pairs(Enum.HumanoidStateType:GetEnumItems()) do
-                local ok2, enabled = pcall(function() return hum:GetStateEnabled(st) end)
-                if ok2 and enabled then
-                    table.insert(stateList, tostring(st.Name))
+                if st ~= Enum.HumanoidStateType.None then
+                    local ok2, enabled = pcall(function() return hum:GetStateEnabled(st) end)
+                    if ok2 and enabled then
+                        table.insert(stateList, tostring(st.Name))
+                    end
                 end
             end
             U.S_Push("  Enabled States  : " .. table.concat(stateList, ", "))

@@ -12,12 +12,11 @@ local function Log(msg, tag)
     local color = (Cfg.Colors and Cfg.Colors[tag]) or ""
     local formatted = string.format("[HL|%s] %s", tag, tostring(msg))
     pcall(function()
+        print(formatted)
         if rconsoleprint then
             if color ~= "" then rconsoleprint(color) end
             rconsoleprint(formatted .. "\n")
             if color ~= "" then rconsoleprint("@@WHITE@@") end
-        else
-            print(formatted)
         end
     end)
 end
