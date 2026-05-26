@@ -49,8 +49,13 @@ local function AttachCharacter(char)
             lastHP = hp
         end)
 
+        local wasRunning = false
         hum.Running:Connect(function(speed)
-            U.LogRT("HUM_RUN", "Humanoid", string.format("Speed=%.2f", speed))
+            local isRunning = speed > 0.1
+            if isRunning ~= wasRunning then
+                wasRunning = isRunning
+                U.LogRT("HUM_RUN", "Humanoid", isRunning and string.format("Started running (Speed=%.2f)", speed) or "Stopped running")
+            end
         end)
 
         hum.Jumping:Connect(function(active)
