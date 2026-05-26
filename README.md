@@ -14,10 +14,10 @@ A highly advanced, modular, and comprehensive Roblox Game Dumper and Real-time S
 
 ## 🚀 How to Execute
 
-You do not need to download the files! Just run this single `loadstring` in your executor:
+You do not need to download the files! Just run this single `loadstring` in your executor (includes a cache-buster to ensure you always get the latest update):
 
 ```lua
-loadstring(game:HttpGet("https://raw.githubusercontent.com/Konmeo22132-alt/Universal-Game-Dumper/main/main.lua"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Konmeo22132-alt/Universal-Game-Dumper/main/main.lua?t=" .. tostring(tick())))()
 ```
 
 ## 🛠️ Configuration

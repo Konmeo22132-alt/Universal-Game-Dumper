@@ -40,8 +40,9 @@ local function Import(relPath)
 
     local src
     if USE_GITHUB then
-        local url = string.format("https://raw.githubusercontent.com/%s/%s/%s/%s", 
-            GITHUB_USER, GITHUB_REPO, GITHUB_BRANCH, relPath)
+        local cacheBuster = tostring(typeof(tick) == "function" and tick() or os.time()) .. tostring(math.random(1, 100000))
+        local url = string.format("https://raw.githubusercontent.com/%s/%s/%s/%s?t=%s", 
+            GITHUB_USER, GITHUB_REPO, GITHUB_BRANCH, relPath, cacheBuster)
         local ok, res = pcall(game.HttpGet, game, url)
         if not ok or not res or res == "404: Not Found" then
             warn("[HuneLog] Failed to fetch from GitHub: " .. url)
